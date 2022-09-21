@@ -1,0 +1,52 @@
+
+:root {
+  --statusarea-error-color: red;
+  --statusarea-border-color: lightblue;
+  --statusarea-background: rgb(229, 229, 229);
+  --statusarea-closed-message-border-color: gray;
+}
+
+
+#statusarea {
+  position: fixed;
+  bottom: 0em;
+  left: 0;
+  border: var(--statusarea-border-color);
+  background: var(--statusarea-background);
+}
+
+#statusarea > .message-list {
+  display: inline-block;
+  width: 80vw;
+}
+
+#statusarea > .message-list > .error {
+  color: var(--statusarea-error-color);
+}
+
+#statusarea > .message-list > .closed {
+  visibility: hidden;
+  height: 0px;
+  border-left: 2px solid var(--statusarea-closed-message-border-color);
+  opacity: 50%
+}
+#statusarea.open > .message-list > .closed {
+  visibility: visible !important;
+  height: unset
+}
+
+#statusarea > .message-list > * > .duplicate-count:after {
+  content: "(" attr(data-count) ")";
+  color:gray
+}
+#statusarea > .message-list > * > .duplicate-count {
+  display: inline;
+  margin-left: 1em
+}
+#statusarea .message-list > div > .duplicate-count[data-count="0"] {
+  visibility: hidden
+}
+
+#statusarea > input[type="button"] {
+  border: none;
+}
